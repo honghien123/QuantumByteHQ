@@ -1,10 +1,13 @@
-function mergeKLists(lists) {
-  if (lists.length === 0) return null;
-  while (lists.length > 1) {
-    const first = lists.shift();
-    const second = lists.shift();
-    const merged = mergeTwoLists(first, second);
-    lists.push(merged);
+function subsets(nums) {
+  const result = [];
+  backtrack(0, []);
+  return result;
+  function backtrack(start, current) {
+    result.push([...current]);
+    for (let i = start; i < nums.length; i++) {
+      current.push(nums[i]);
+      backtrack(i + 1, current);
+      current.pop();
+    }
   }
-  return lists[0];
 }
